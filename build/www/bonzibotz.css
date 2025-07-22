@@ -1,0 +1,81 @@
+html {
+  height: 140%;
+  width: 140%;
+}
+
+body {
+    background-image: url(bgfull.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+    font-family: sans-serif;
+    background-size: cover;
+} 
+#bg {
+    background-color: red;
+    background-size: cover;
+    z-index: 1;
+}
+button {
+    border-radius: 5px;
+    background-color: rgb(211, 193, 225,0.7);
+    width: 90px;
+    height: 50px;
+    margin: 0;
+    color: white;
+}
+#box {
+    background-color: rgb(107, 54, 150,0.3);
+    backdrop-filter: blur(9px);
+    border: 2px solid rgb(34, 24, 52,0.6);
+    z-index:10;
+    color: white;
+    max-width: 680px;
+    border-radius: 10px;
+}
+#alert {
+    background-color: rgb(200, 184, 214,0.7);
+    backdrop-filter: blur(9px);
+    border: 2px solid rgb(34, 24, 52,0.6);
+    z-index:10;
+    color: black;
+    max-width: 680px;
+    border-radius: 10px;
+}
+#bar {
+    width: 100%;
+    height: 20%;
+    position: relative;
+}
+
+code {
+  font-family: Consolas,"courier new";
+  color: crimson;
+  background-color: black;
+  padding: 2px;
+  font-size: 105%;
+}
+
+@keyframes colorRotate {
+    from {
+        color: rgb(255, 0, 0);
+    }
+    16.6% {
+        color: rgb(255, 123, 0);
+    }
+    33.3% {
+        color: rgb(255, 234, 0);
+    }
+    50% {
+        color: rgb(4, 255, 0);
+    }
+    66.6% {
+        color: rgb(0, 132, 255);
+    }
+    83.3% {
+        color: rgb(128, 0, 255);
+    }
+    to {
+        color: rgb(255, 0, 200);
+    }
+}

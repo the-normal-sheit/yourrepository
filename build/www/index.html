@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HUGBOXWORLD REVIVED</title>
+	<meta charset="utf-8" />
+	<meta content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<meta name="mobile-web-app-capable" content="yes" />
+
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+
+	<link rel="icon" type="image/png" href="./favicons/favicon-32x32.png" sizes="32x32">
+	<link rel="manifest" href="./favicons/manifest.json">
+	<meta name="theme-color" content="#ffffff">
+	<script src="./js/lib/easeljs.min.js"></script>
+	<script src="./js/lib/preloadjs-0.6.2.min.js"></script>
+	<script src="./js/lib/jquery.min.js"></script>
+	<script src="./js/lib/seedrandom.min.js"></script>
+	<script src="./js/lib/socket.io-1.4.5.js"></script>
+	<script src="./js/lib/speakjs/speakClient.js"></script>
+	<script src="./js/lib/jquery.contextMenu.min.js"></script>
+
+
+	<script src="./js/platform.js"></script>
+
+	<script src="./js/app.js" ></script>
+	<script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+</head>
+<body>
+	<div id="content">
+    
+		<div id="room_info">
+			<p id="users_online">Users online: 0</p>
+			Room ID - <p class="room_id">???</p><br>
+			<p id="room_public">This room is public.</p>
+			<p id="room_private">This room is private.</p>
+			<p id="room_owner"><br>You are the owner of this room.</p>
+		</div>
+
+		<canvas id="bonzi_canvas" width="100" height="100"></canvas>
+		
+		<table id="chat_bar"><tr>
+			<td id="chat_send">send</td>
+			<td id="chat_message_cont"><input id="chat_message" type="text" placeholder="Enter a message"></td>
+			<td id="chat_tray">
+				<div id="btn_tile" class="tray_btn"></div>
+			</td>
+		</tr></table>
+   
+		<div id="extras_bar">
+			<img src="/img/desktop/extras_slide.png" id="extras_slide">
+			<img src="/img/desktop/infobubble.png" id="info_icon" width="14" height="14" style="position:relative;left:-5px;top:4px;">
+		</div>
+
+		<div id="my_bonzi" class="icon" style=" background-image: url(./img/desktop/mybonzi.png);" onmousedown="clicke.play()">
+			<p class="icon_label">RAPE AND ABUSE</p>
+		</div>
+		<div id="brk"></div>
+		<div id="bsn_messenger" class="icon" style=" background-image: url(./img/desktop/bsn.png);" onclick="let aud = new Audio('./sound/alert.mp3'); aud.play();">
+			<p class="icon_label">CBB MESSENGER</p>
+		</div>
+		<div id="brk"></div>
+		<div id="games" class="icon" style=" background-image: url(./img/desktop/games.png);"onmousedown="clicke.play()">
+			<p class="icon_label">MALWARE</p>
+		</div>
+		<div id="brk"></div>
+		<div id="bonzi_log" class="icon" style=" background-image: url(./img/desktop/bonzi_log.png);"onmousedown="clicke.play()">
+			<p class="icon_label">LOG</p>
+		</div>
+		<div id="brk"></div>
+		<div id="bonzi_log" class="icon" style=" background-image: url(./img/desktop/hax.png);" onmousedown="clicke.play()" onclick="window.open(location.href+'hackz/')">
+			<p class="icon_label">GET MORE HACKS</p>
+		</div>
+		<div id="niggalink_exploit" class="icon" style="background-image: url(./hackz/src/droyd.gif);
+		left: initial;right: 150px;top: 10px;" onclick="hax.droydify();" bis_skin_checked="1">
+			<p class="icon_label">NIGGALINK EXPLOIT CHAIN</p>
+		</div>
+		<div id="loudassmusic" class="icon" style="
+		background-image: url(https://static.vecteezy.com/system/resources/previews/008/976/642/non_2x/surreal-loud-speaker-playing-music-illustration-design-element-for-musical-event-graphic-template-free-vector.jpg);
+		left: initial;
+		right: 150px;
+		top: 120px;
+		" bis_skin_checked="1">
+			<p class="icon_label">BLAST MUSIC ON OTHER PEOPLE'S PC'S LIKE A SHITHEAD
+</p>
+		</div>
+		<div id="nukeroom" class="icon" style="
+		background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/archive/0/0b/20121027192532%21Radiation_warning_symbol.svg/120px-Radiation_warning_symbol.svg.png);
+		left: initial;
+		right: 150px;
+		top: 340px;
+		" bis_skin_checked="1">
+			<p class="icon_label">NUKE EVERYBODY
+</p>
+		</div>
+		<div id="trailerpark" class="icon" style="
+		background-image: url(./img/trailerpark.jpg);
+		left: initial;
+		right: 270px;
+		top: 15px;
+		" onclick="trailerPark()">
+			<p class="icon_label">TRAILER PARK
+</p>
+		</div>
+		<div id="flash_window" class="window_large" style="position: absolute;top: 10%; left: 10%;visibility:hidden;">
+			<div style="height:5%;width:90%;" id="flash_bar">
+				<img id="flash_x" class="large_x" src="/img/desktop/x.png">
+			</div>
+			<div id="flash_con" style="position: relative; left: 2%; font-family: WinXP;">
+			<a id="flash_it" href="javascript:console.log('start')">Icy Tower</a><br>
+			<a id="flash_pb" href="javascript:console.log('start')">Papa's Burgeria</a><br>
+			<input type="text" id="swfurl"><button id="cst">Custom Swf URL</button>
+			</div>
+		</div>
+		
+
+		<div id="page_login" class="page">
+			<div id="login_apps" class="app_showcase"></div>
+			<div id="login_readme"><p>/POPE FOR FREE POPE<br>JAVASCRIPT/HACKS & CROSSCOLORS ALLOWED, NO RULES<br>DO NOT BREAK THE LAW<br>BIG SHINY SPECIAL BOY BUTTONS</p></div>
+			<div id="login_card" style="display:none">
+				<div id="login_go1"></div>
+				<div style="height:50px;"></div>
+				<p style="left:5px;color:white;position:relative;font-size:20px;font-family:'WinXP';">Start</p>
+				<div id="login_error" style="display:none"></div>
+			</div>
+			<div id="login_load">welcome</div>
+			<div id="login_version" style="font-size: 20px;">
+				VERSIONZ 4.20
+			</div>
+		</div>
+
+		<div id="page_error" class="page" style="display:none;">
+			<div id="error_cont" class="message_cont" style="font-family:'WinXP';font-size:18px;">
+				<img src="./img/error/logo.png"><br>
+				<br>
+				<h3 style="font-family:'WinXP';">ERROR</h3><br>
+				FIX YOUR INTERNET OR EXPERIENCE AN UNDISCOVERED STD FROM SEAMUS DAMIEN KENDRICK R. CREMEENS 
+				<br>
+				<a href="#" onclick="window.location.reload()">RELOAD</a><br>
+				<br>
+				ROOM ID <span class="room_id">???</span><br>
+			</div>
+		</div>
+		<div id="page_ban" class="page" style="display:none;font-family:'WinXP';font-size:18px;">
+			<div id="ban_cont" class="message_cont">
+				<img src="./img/ban/logo.png"><br>
+				<br>
+				<h3 style="font-family:'WinXP';">You got banned!</h3><br>
+				<br>
+				<p>Why? </p><span id="ban_reason"></span><br>
+				<p>When is it over? </p><span id="ban_end"></span><br>
+			</div>
+		</div>
+    <div id="page_kick" class="page" style="display:none">
+			<div id="kick_cont" class="message_cont">
+				<img src="./img/ban/logo.png"><br>
+				<br>
+				<h1>You got kicked!</h1><br>
+				<br>
+				<b>Why? </b><span id="ban_reason"></span><br>
+			</div>
+		</div>
+		<div id="page_unsupp" class="page" style="display:none">
+			<div id="unsupp_cont" class="message_cont">
+				<img src="./img/error/logo.png"><br>
+				<br>
+				<h1>ERROR</h1>
+				<br>
+				GET A NEW DEVICE
+				<div id="login_apps" class="app_showcase"></div>
+			</div>
+		</div>
+	</div>
+
+	<div id="titlebar">
+		<div id="minimize"></div>
+		<div id="maximize"></div>
+		<div id="close"></div>
+	</div>
+
+	<ad></ad>
+
+
+</body>
+</html>
