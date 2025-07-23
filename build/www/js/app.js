@@ -1361,6 +1361,25 @@ class Bonzi {
               });
             }
           },
+          "colorsteal":{
+            name:"Steal Color",
+            callback:()=>{
+              if(this.userPublic.color.startsWith('http')){
+                newWindow(
+                  'options',
+                  'Crosscolor Link/URL',
+                  `
+                  <hr>
+                  Here is the stolen color:<br>
+                  <a href="${this.userPublic.color}">Get color</a>
+                  `,
+                  'ok',
+                  '35%',
+                  '35%'
+                )
+              }
+            }
+          },
           "heyname": {
             name: "Hey {NAME}!",
             callback: () => {
