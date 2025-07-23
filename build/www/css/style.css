@@ -585,8 +585,8 @@ color:white; }
     right:20%;
   }
   @keyframes eyejizz {
-    from{filter:hue-rotate(0deg);filter: drop-shadow(0px 0px 3px rgb(255, 74, 74));}
-    to{filter:hue-rotate(360deg);filter: drop-shadow(0px 0px 3px rgb(255, 74, 74));}
+    from{filter:hue-rotate(0deg) drop-shadow(0px 0px 3px rgb(255, 74, 74));}
+    to{filter:hue-rotate(360deg) drop-shadow(0px 0px 3px rgb(255, 74, 74));}
   }
   .icon3 {
     left:initial;
