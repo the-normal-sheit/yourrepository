@@ -2153,10 +2153,6 @@ if(!Object.keys(erikz).includes(data.guid))bonzis[data.guid] = new Bonzi(data.gu
           document.getElementById('bonzi_'+d.guid).style.display='none';
         }
     });
-    document.getElementById('chat_send').onmouseup = () => {
-      alert('a');
-        bw2.emit("talk",{text:lastMsgz});
-    }
 
     setTimeout(() => {bw9 = bw2;},1000);
     my.guid = await getGuid();
