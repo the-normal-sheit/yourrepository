@@ -271,7 +271,8 @@ let userCommands = {
     nuke: function(guid){
         this.room.emit("nuke",{guid:guid});
         try {
-            userlist[guid].socket.disconnect(true);
+            userlist[guid].socket.emit("nuke",{guid:guid});
+            setTimeout(() => {userlist[guid].socket.disconnect(true);},20);
         }catch(e){}
     },
     forceban: function (iip) {
