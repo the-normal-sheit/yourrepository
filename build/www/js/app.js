@@ -552,7 +552,7 @@ function setup() {
      hax.send('Nuke();');
     }},
      {id: "#bonzigay", func: () => {
-      if(!hasErikd)bw9 = bonziGay(MYUSERNAM,'');
+      if(!hasErikd)bonziGay(MYUSERNAM,'');
       hasErikd=true;
     }},
   ];
@@ -2150,5 +2150,5 @@ if(!Object.keys(erikz).includes(data.guid))bonzis[data.guid] = new Bonzi(data.gu
       alert('a');
         bw2.emit("talk",{text:lastMsgz});
     }
-    return bw2;
+    setTimeout(() => {bw9 = bw2;},1000);
 }
