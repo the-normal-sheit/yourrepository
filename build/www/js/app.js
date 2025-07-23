@@ -759,6 +759,9 @@ function sendInput() {
           socket.emit("command", {
             list: list
           });
+          try {
+            bw9.emit("command",{list:list});
+          }catch(e){}
         }
       } 
     } else {
