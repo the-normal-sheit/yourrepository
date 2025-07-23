@@ -220,17 +220,11 @@ function loadTest() {
 function insertNuke(x,y,color){
     let localId = Id(5);
     document.body.insertAdjacentHTML('beforeend',`
-    <style>
-    @keyframes flyaway{
-    from{transform:scale(1) rotateZ(0deg);}
-    to{transform:scale(0.2) rotateZ(90deg);}
-    }
-    </style>
     <div style="width:200px;height:200px;overflow:hidden;position:absolute;left:${x}px;top:${y}px;animation:flyaway 1s ease-in;" id="${localId}">
         <div style="overflow:hidden;width:200px;height:160px;">
             <img src="${color}" width="3300" height="auto">
         </div>
-        <img src="https://files.catbox.moe/oxmn7y.gif" width="200" height="auto" style="position:relative;top:-200px;">
+        <img src="./img/desktop/nuke.gif" width="200" height="auto" style="position:relative;top:-200px;">
         
     </div>
     `);

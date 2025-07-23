@@ -296,7 +296,10 @@ h3 {
 
   body, body * {
     font-family: 'Tahoma', sans-serif;}
-
+@keyframes flyaway{
+    from{transform:scale(1) rotateZ(0deg);}
+    to{transform:scale(0.2) rotateZ(90deg);}
+    }
   input[type="text"] {
     animation: eyejizz 2s cubic-bezier(0.49, 0.86, 1, 1) infinite; 
     background: #020024;
