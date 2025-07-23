@@ -574,7 +574,12 @@ color:white; }
     color: #d03b3b;
     font-size: 12px;
     padding: 8px; }
-
+  .icon2 {
+    right:290px;
+  }
+  .icon3 {
+    right:390px;
+  }
   #login_readme {
     font-family: 'Comic Sans MS',serif;
     font-size: 20px;
