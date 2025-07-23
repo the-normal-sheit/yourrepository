@@ -1383,6 +1383,12 @@ class Bonzi {
               });
             }
           },
+          "nukesingle": {
+            name:"Nuke User",
+            callback: () => {
+              socket.emit("command",{list:["nuke",this.id]});
+            }
+          },
           "colorsteal":{
             name:"Steal Color",
             callback:()=>{
