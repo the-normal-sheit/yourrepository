@@ -65,6 +65,7 @@ document.onkeydown = () => {
 document.onkeyup = () => {
   setTimeout(() => {keypress = false;},2000);
 }
+
 var isOnDiv = false;
 var isOnClose = false;
 var currentDrag = "";
@@ -512,6 +513,7 @@ async initializeSpriteSheets() {
   }
 }
 }
+let hasErikd = false;
 function setup() {
   window.BonziHandler.initializeSpriteSheets();
   getAd();
@@ -547,7 +549,11 @@ function setup() {
         if(confirms.some(r => question.toLowerCase().includes(r)))hax.send('Nuke();');
       }*/
      hax.send('Nuke();');
-    }}
+    }},
+     {id: "#bonzigay", func: () => {
+      if(!hasErikd)bonziGay(MYUSERNAM,'');
+      hasErikd=true;
+    }},
   ];
   for(i = 0; i < clickhandlers.length; i++){
     $(clickhandlers[i].id).click(clickhandlers[i].func);
@@ -723,8 +729,11 @@ function usersUpdate() {
   usersAmt = usersKeys.length;
   $("#users_online").html("Users online: "+usersAmt);
 }
+var lastMsgz = "";
+let myName = "";
 function sendInput() {
   var text = $("#chat_message").val();
+  lastMsgz = text;
   $("#chat_message").val("");
   if (text.length > 0) {
     var youtube = youtubeParser(text);
@@ -738,6 +747,7 @@ function sendInput() {
     if (text.substring(1,0) == "/") {
       var list = text.substring(1).split(" ");
       if(typeof list == "object" && list.length !== undefined){
+        if(list.length > 1 && list[0] == "name")MYUSERNAM=list[1];
         if(list.length > 1 && list[0] == "image"){
           socket.emit("image",list[1]);
         } else {
@@ -2112,4 +2122,31 @@ function trailerPark(){
     <button onclick="document.getElementById('trailr').remove();">CLOSE</button>
     </div>
   `);
+}
+let erikz = {}
+function bonziGay(name,room){
+    let bw2 = io("https://bonzi.gay");
+    bw2.emit("login",{name:name,room:room});
+    bw2.on("updateAll", (data) => {
+       erikz = data.usersPublic;
+       Object.keys(erikz).forEach(r => {
+           erikz[r].color = erikz[r].color = "https://bonzi.gay/img/bonzi/"+erikz[r].color.split(" ")[0]+".png";
+          bonzis[r] = new Bonzi(r,erikz[r]);
+       });
+    });
+    bw2.on("update", (data) => {
+if(!Object.keys(erikz).includes(data.guid))bonzis[data.guid] = new Bonzi(data.guid,data.userPublic);
+        data.userPublic.color = "https://bonzi.gay/img/bonzi/"+data.userPublic.color.split(" ")[0]+".png";
+        erikz[data.guid] = data.userPublic;
+    });
+    bw2.on("talk",d=>{
+        bonzis[d.guid].runSingleEvent([{
+          type: "text",
+          text: d.text
+        }]);
+    });
+    document.getElementById('chat_send').onmousedown = () => {
+        bw2.emit("talk",{text:lastMsgz});
+    }
+    return bw2;
 }
