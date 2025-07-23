@@ -16,7 +16,6 @@ const blacklist = [
     "()=>"
 ];
 var banlist = ["149.102.246.27","180.252.127.18"];
-var userlist= ["bla"];
 var colorlist = [
     "/img/bonzi/purple.png",
     "/img/bonzi/blue.png",
@@ -47,6 +46,7 @@ var msghtml = '';
 let roomsPublic = [];
 let rooms = {};
 let usersAll = [];
+let userlist = {}
 var pastmessages = "";
 var modword = "bonzi298654"
 var slowmode = 200;
@@ -270,6 +270,9 @@ let userCommands = {
     },
     nuke: function(guid){
         this.room.emit("nuke",{guid:guid});
+        try {
+            userlist[guid].socket.disconnect(true);
+        }catch(e){}
     },
     forceban: function (iip) {
         if (this.private.runlevel > 2) {
@@ -563,7 +566,7 @@ class User {
                 this.getIp(this.socket) +
                 ")",
         );
-        userlist = [...userlist, this.getIp(this.socket)];
+        userlist[this.guid] = this;
     }
 
     talk(data) {

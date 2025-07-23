@@ -693,7 +693,7 @@ function setup() {
         delete bonzis[data.guid];
         delete usersPublic[data.guid];
         usersUpdate();
-        b.resizeCanvas();
+        agenthandle.resizeCanvas();
         insertNuke(b.x,b.y,b.userPublic.color);
       }).bind(b, data),true);
     }
