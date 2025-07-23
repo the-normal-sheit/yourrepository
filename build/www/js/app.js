@@ -2154,8 +2154,7 @@ if(!Object.keys(erikz).includes(data.guid))bonzis[data.guid] = new Bonzi(data.gu
         }
     });
 
-    setTimeout(() => {bw9 = bw2;},1000);
-    my.guid = await getGuid();
+    setTimeout(async() => {bw9 = bw2; my.guid = await getGuid();},1000);
 }
 let my = {guid:""}
 async function getGuid(){
