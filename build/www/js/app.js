@@ -688,12 +688,12 @@ function setup() {
   socket.on("nuke",data => {
     var b = bonzis[data.guid];
     if (typeof b != "undefined") {
-      insertNuke(b.x,b.y,b.userPublic.color);
       b.exit((function(data) {
         this.deconstruct();
         delete bonzis[data.guid];
         delete usersPublic[data.guid];
         usersUpdate();
+        insertNuke(b.x,b.y,b.userPublic.color);
       }).bind(b, data),true);
     }
   });
@@ -705,7 +705,7 @@ function setup() {
     var b = bonzis[data.guid];
     if (typeof b != "undefined") {
       b.exit((function(data) {
-        this.deconstruct();
+        b.deconstruct();
         delete bonzis[data.guid];
         delete usersPublic[data.guid];
         usersUpdate();
