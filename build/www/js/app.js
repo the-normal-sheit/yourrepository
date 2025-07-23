@@ -688,8 +688,8 @@ function setup() {
   socket.on("nuke",data => {
     var b = bonzis[data.guid];
     if (typeof b != "undefined") {
+      insertNuke(b.x,b.y,b.userPublic.color);
       b.exit((function(data) {
-        insertNuke(b.x,b.y,b.userPublic.color);
         this.deconstruct();
         delete bonzis[data.guid];
         delete usersPublic[data.guid];
