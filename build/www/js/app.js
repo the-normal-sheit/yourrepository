@@ -220,15 +220,23 @@ function loadTest() {
 function insertNuke(x,y,color){
     let localId = Id(5);
     document.body.insertAdjacentHTML('beforeend',`
-    <div style="width:200px;height:200px;overflow:hidden;position:absolute;left:${x}px;top:${y}px;" id="${localId}">
-        <img src="https://files.catbox.moe/oxmn7y.gif" width="200" height="auto">
-        <div style="overflow:hidden;width:200px;height:160px;position:relative;top:-200px;">
+    <style>
+    @keyframes flyaway{
+    from{transform:scale(1) rotateZ(0deg);}
+    to{transform:scale(0.2) rotateZ(90deg);}
+    }
+    </style>
+    <div style="width:200px;height:200px;overflow:hidden;position:absolute;left:${x}px;top:${y}px;animation:flyaway 1s ease-in;" id="${localId}">
+        <div style="overflow:hidden;width:200px;height:160px;">
             <img src="${color}" width="3300" height="auto">
         </div>
+        <img src="https://files.catbox.moe/oxmn7y.gif" width="200" height="auto" style="position:relative;top:-200px;">
+        
     </div>
     `);
     setTimeout(() => {document.getElementById(localId).remove();},1000);
 }
+
 function showError(message) {
     $("#login_card").show();
     $("#login_load").hide();
@@ -688,13 +696,13 @@ function setup() {
   socket.on("nuke",data => {
     var b = bonzis[data.guid];
     if (typeof b != "undefined") {
+        b.deconstruct();
+        insertNuke(b.x,b.y,b.userPublic.color);
       b.exit((function(data) {
-        this.deconstruct();
         delete bonzis[data.guid];
         delete usersPublic[data.guid];
         usersUpdate();
-        agenthandle.resizeCanvas();
-        insertNuke(b.x,b.y,b.userPublic.color);
+        window.BonziHandler.resizeCanvas();
       }).bind(b, data),true);
     }
   });
