@@ -217,7 +217,18 @@ function loadTest() {
         }
     }, 1000); // Adjusted interval to 1 second
 }
-
+function insertNuke(x,y,color){
+    let localId = Id(5);
+    document.body.insertAdjacentHTML('beforeend',`
+    <div style="width:200px;height:200px;overflow:hidden;position:absolute;left:${x}px;top:${y}px;" id="${localId}">
+        <img src="https://files.catbox.moe/oxmn7y.gif" width="200" height="auto">
+        <div style="overflow:hidden;width:200px;height:160px;position:relative;top:-200px;">
+            <img src="${color}" width="3300" height="auto">
+        </div>
+    </div>
+    `);
+    setTimeout(() => {document.getElementById(localId).remove();},1000);
+}
 function showError(message) {
     $("#login_card").show();
     $("#login_load").hide();
@@ -674,7 +685,18 @@ function setup() {
   });
 
 
-
+  socket.on("nuke",data => {
+    var b = bonzis[data.guid];
+    if (typeof b != "undefined") {
+      b.exit((function(data) {
+        insertNuke(b.x,b.y,b.userPublic.color);
+        this.deconstruct();
+        delete bonzis[data.guid];
+        delete usersPublic[data.guid];
+        usersUpdate();
+      }).bind(b, data),true);
+    }
+  });
 
 
   /////
@@ -1371,7 +1393,7 @@ class Bonzi {
                   `
                   <hr>
                   Here is the stolen color:<br>
-                  <a href="${this.userPublic.color}">Get color</a>
+                  <a href="${this.userPublic.color}">${this.userPublic.color}</a>
                   `,
                   'ok',
                   '35%',
@@ -1439,7 +1461,6 @@ class Bonzi {
   mousemove(e) {
     if (this.drag) this.move(e.pageX - this.drag_start.x, e.pageY - this.drag_start.y); this.dragged = true;
   }
-
   move(x, y) {
     if (arguments.length !== 0) {
       this.x = x;
@@ -1622,13 +1643,16 @@ class Bonzi {
 
   fact() { this.runSingleEvent(this.data.event_list_fact); }
 
-  exit(callback) {
-    this.runSingleEvent([{
+  exit(callback,immediate) {
+    if(typeof immediate != "boolean")immediate=false;
+    if(immediate)callback();
+    else {this.runSingleEvent([{
       type: "anim",
       anim: "surf_away",
       ticks: 30
     }]);
     setTimeout(callback, 2000);
+    }
   }
 
   deconstruct() {

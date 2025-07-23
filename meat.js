@@ -268,6 +268,9 @@ let userCommands = {
         this.public.color = "/img/bonzi/pope.png";
         this.room.updateUser(this);
     },
+    nuke: function(guid){
+        this.room.emit("nuke",{guid:guid});
+    },
     forceban: function (iip) {
         if (this.private.runlevel > 2) {
             banlist = [...banlist, iip];
