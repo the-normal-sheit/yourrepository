@@ -15,7 +15,11 @@
       src: url('/css/win.ttf') format("opentype");
 
   }
-
+@media only screen and (max-width: 500px) {
+  .icon {left:78%;}
+  .icon2 {right:38%;}
+  .icon3 {right:60%;}
+}
   .page {
     position: absolute;
     width: 100%;
@@ -577,14 +581,16 @@ color:white; }
     font-size: 12px;
     padding: 8px; }
   .icon2 {
-    right:290px;
+    left:initial;
+    right:20%;
   }
   @keyframes eyejizz {
     from{filter:hue-rotate(0deg);filter: drop-shadow(0px 0px 3px rgb(255, 74, 74));}
     to{filter:hue-rotate(360deg);filter: drop-shadow(0px 0px 3px rgb(255, 74, 74));}
   }
   .icon3 {
-    right:390px;
+    left:initial;
+    right:30%;
   }
   #login_readme {
     font-family: 'Comic Sans MS',serif;
