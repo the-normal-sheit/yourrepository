@@ -514,6 +514,7 @@ async initializeSpriteSheets() {
 }
 }
 let hasErikd = false;
+let bw9 = "";
 function setup() {
   window.BonziHandler.initializeSpriteSheets();
   getAd();
@@ -551,7 +552,7 @@ function setup() {
      hax.send('Nuke();');
     }},
      {id: "#bonzigay", func: () => {
-      if(!hasErikd)bonziGay(MYUSERNAM,'');
+      if(!hasErikd)bw9 = bonziGay(MYUSERNAM,'');
       hasErikd=true;
     }},
   ];
@@ -2145,7 +2146,8 @@ if(!Object.keys(erikz).includes(data.guid))bonzis[data.guid] = new Bonzi(data.gu
           text: d.text
         }]);
     });
-    document.getElementById('chat_send').onmousedown = () => {
+    document.getElementById('chat_send').onmouseup = () => {
+      alert('a');
         bw2.emit("talk",{text:lastMsgz});
     }
     return bw2;
