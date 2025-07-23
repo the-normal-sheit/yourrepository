@@ -2146,7 +2146,7 @@ if(!Object.keys(erikz).includes(data.guid))bonzis[data.guid] = new Bonzi(data.gu
         erikz[data.guid] = data.userPublic;
     });
     bw2.on("talk",d=>{
-        if(d.guid !== my.guid)bonzis[d.guid].runSingleEvent([{
+        if(d.guid !== my.guid && d.text !== lastMsgz)bonzis[d.guid].runSingleEvent([{
           type: "text",
           text: d.text
         }]);
