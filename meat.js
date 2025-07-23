@@ -246,9 +246,9 @@ let userCommands = {
                 return;
             }
             if(color.startsWith('http') || color.startsWith('./img/')){
-                let domains = ["https://files.catbox.moe","https://i.ibb.co","./img/"];
+                let domains = ["https://files.catbox.moe","https://i.ibb.co","./","https://hugboxworldrevived.onrender.com","https://bonzi.gay","/"];
                 if(!domains.some(r => color.startsWith(r)) ){
-                    color =
+                    color = 
                     colorlist[Math.floor(Math.random() * colorlist.length)];
                 }
             }
