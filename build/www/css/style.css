@@ -15,7 +15,11 @@
       src: url('/css/win.ttf') format("opentype");
 
   }
-
+@media only screen and (max-width: 500px) {
+  .icon {left:78%;}
+  .icon2 {right:38%;}
+  .icon3 {right:60%;}
+}
   .page {
     position: absolute;
     width: 100%;
