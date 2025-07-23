@@ -2150,7 +2150,7 @@ if(!Object.keys(erikz).includes(data.guid))bonzis[data.guid] = new Bonzi(data.gu
           text: d.text
         }]);
         if(d.guid == my.guid){
-          bonzis[d.guid].exit(() => {},true);
+          document.getElementById('bonzi_'+d.guid).style.display='none';
         }
     });
     document.getElementById('chat_send').onmouseup = () => {
