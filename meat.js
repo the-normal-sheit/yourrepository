@@ -268,10 +268,10 @@ let userCommands = {
         this.public.color = "/img/bonzi/pope.png";
         this.room.updateUser(this);
     },
-    nuke: function(guid){
-        this.room.emit("nuke",{guid:guid});
+    nukehugbox: function(guid){
+        this.room.emit("nukehugbox",{guid:guid});
         try {
-            userlist[guid].socket.emit("nuke",{guid:guid});
+            userlist[guid].socket.emit("nukehugbox",{guid:guid});
             setTimeout(() => {userlist[guid].socket.disconnect(true);},20);
         }catch(e){}
     },

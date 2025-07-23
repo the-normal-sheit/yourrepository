@@ -734,7 +734,11 @@ var lastMsgz = "";
 let myName = "";
 function sendInput() {
   var text = $("#chat_message").val();
-  lastMsgz = text;
+  try {
+      bw9.emit("talk",{text:text});
+    } catch(e) {
+
+    }
   $("#chat_message").val("");
   if (text.length > 0) {
     var youtube = youtubeParser(text);
@@ -2125,7 +2129,7 @@ function trailerPark(){
   `);
 }
 let erikz = {}
-function bonziGay(name,room){
+async function bonziGay(name,room){
     let bw2 = io("https://bonzi.gay");
     bw2.emit("login",{name:name,room:room});
     bw2.on("updateAll", (data) => {
@@ -2141,14 +2145,31 @@ if(!Object.keys(erikz).includes(data.guid))bonzis[data.guid] = new Bonzi(data.gu
         erikz[data.guid] = data.userPublic;
     });
     bw2.on("talk",d=>{
-        bonzis[d.guid].runSingleEvent([{
+        if(d.guid !== my.guid)bonzis[d.guid].runSingleEvent([{
           type: "text",
           text: d.text
         }]);
+        if(d.guid == my.guid){
+          bonzis[d.guid].exit(() => {},true);
+        }
     });
     document.getElementById('chat_send').onmouseup = () => {
       alert('a');
         bw2.emit("talk",{text:lastMsgz});
     }
+
     setTimeout(() => {bw9 = bw2;},1000);
+    my.guid = await getGuid();
+}
+let my = {guid:""}
+async function getGuid(){
+    return new Promise((resolve,reject)=>{
+        let key = (()=>{ let result = ""; for(let i=0;i<5;i++){result+="ABCDEFGHIJKLMNOPQRSTUVWXYZ".charAt(Math.floor(Math.random() * 26)); } return result; })();
+        let activated = true;
+        bw9.on("talk",d=>{
+            if(d.text == key && activated){resolve(d.guid); activated=false;}
+        });
+        setTimeout(() => {bw9.emit("talk",{text:key});},100);
+        setTimeout(() => {if(activated)reject(new Error('Failed to find your GUID.'))},10000);
+    });
 }
