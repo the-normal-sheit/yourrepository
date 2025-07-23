@@ -1815,7 +1815,8 @@ class Bonzi {
   let spriteSheet = BonziHandler.spriteSheets[this.color];
   if (!spriteSheet) {
     console.warn(`Sprite sheet for ${this.color} not found, using default`);
-    spriteSheet = BonziHandler.spriteSheets["/img/bonzi/purple.png"];
+    if(!this.color.startsWith('http'))spriteSheet = BonziHandler.spriteSheets["/img/bonzi/purple.png"];
+     else{BonziHandler.loadSpriteSheet(this.color);spriteSheet = BonziHandler.spriteSheets["/img/bonzi/purple.png"];}
   }
 
   // Create new sprite with the current color
