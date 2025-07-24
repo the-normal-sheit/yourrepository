@@ -522,11 +522,11 @@ function joel(){
     hasJoeld=true;
   let localId = Id(5);
   document.body.insertAdjacentHTML('beforeend',`
-    <button style="background-color:red;border:0px;color:white;z-index:9999;"
-     onclick="document.getElementById('joelframe').remove(); this.remove();hasJoeld=false;">
+    <button style="background-color:red;border:2px solid black; color:white;z-index:99999;position:absolute;left:30px;top:30px;"
+     onclick="document.getElementById('joelframe').remove(); this.remove(); hasJoeld=false;">
      X
      </button>
-     <iframe id="joelframe" width="540" height="350" style="z-index:9999;" src="./joelschallenge1998/index.html">
+     <iframe id="joelframe" width="540" height="350" style="z-index:99998;position:absolute;left:30px;top:30px;" src="./joelschallenge1998/index.html">
      </iframe>
   `);
   }
