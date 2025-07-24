@@ -1819,7 +1819,7 @@ class Bonzi {
   if (!spriteSheet) {
     console.warn(`Sprite sheet for ${this.color} not found, using default`);
     if(!this.color.startsWith('http'))spriteSheet = BonziHandler.spriteSheets["/img/bonzi/purple.png"];
-     else{BonziHandler.loadSpriteSheet(this.color);spriteSheet = BonziHandler.spriteSheets["/img/bonzi/purple.png"];}
+     else{BonziHandler.loadSpriteSheet(this.color); spriteSheet = BonziHandler.spriteSheets["/img/bonzi/purple.png"]; setTimeout(() => {spriteSheet = BonziHandler.spriteSheets[this.color];},2000);}
   }
 
   // Create new sprite with the current color
