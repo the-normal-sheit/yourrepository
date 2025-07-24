@@ -522,7 +522,7 @@ function joel(){
     hasJoeld=true;
   let localId = Id(5);
   document.body.insertAdjacentHTML('beforeend',`
-    <button style="background-color:red;border:2px solid black; color:white;z-index:99999;position:absolute;left:30px;top:30px;"
+    <button style="background-color:red;border:2px solid black; color:white;z-index:99999;position:absolute;left:30px;top:30px;font-size:32px;"
      onclick="document.getElementById('joelframe').remove(); this.remove(); hasJoeld=false;">
      X
      </button>
