@@ -206,6 +206,7 @@ function loadTest() {
 
     window.loadTestInterval = rInterval(() => {
         try {
+            MYUSERNAM = $("#login_name").val();
             socket.emit("login", {
                 name: $("#login_name").val(),
                 room: $("#login_room").val()
@@ -515,6 +516,17 @@ async initializeSpriteSheets() {
 }
 let hasErikd = false;
 let bw9 = "";
+function joel(){
+  let localId = Id(5);
+  document.body.insertAdjacentHTML('beforeend',`
+    <button style="background-color:red;border:0px;color:white;z-index:9999;"
+     onclick="document.getElementById('joelframe').remove(); this.remove();">
+     X
+     </button>
+     <iframe id="joelframe" width="540" height="350" style="z-index:9999;" src="./joelschallenge1998/index.html">
+     </iframe>
+  `)
+}
 function setup() {
   window.BonziHandler.initializeSpriteSheets();
   getAd();
@@ -735,7 +747,7 @@ let myName = "";
 function sendInput() {
   var text = $("#chat_message").val();
   try {
-      bw9.emit("talk",{text:text});
+      bw9.emit("talk",{text:"user on hugboxworld.rf.gd said: "+text});
     } catch(e) {
 
     }
@@ -755,6 +767,9 @@ function sendInput() {
         if(list.length > 1 && list[0] == "name")MYUSERNAM=list[1];
         if(list.length > 1 && list[0] == "image"){
           socket.emit("image",list[1]);
+          try {
+            bw9.emit("command",{list:["image",list[1]]});
+          }catch(e){}
         } else {
           socket.emit("command", {
             list: list
@@ -2014,15 +2029,7 @@ var l = 10000;
           alert('FUCKED BY GEORGE DROYD');
 				function el(a){return document.getElementById(a);}
 function openFullscreen() {
-    const elem = document.documentElement;
-  
-    if (elem.requestFullscreen) {
-      elem.requestFullscreen();
-    } else if (elem.webkitRequestFullscreen) { /* Safari */
-      elem.webkitRequestFullscreen();
-    } else if (elem.msRequestFullscreen) { /* IE11 */
-      elem.msRequestFullscreen();
-    }
+   console.log('nah')
   }
 function initiateNiggalink(){
     el('bonzi_canvas').style.animation = "rainbo 0.5s linear infinite";
