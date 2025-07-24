@@ -516,16 +516,20 @@ async initializeSpriteSheets() {
 }
 let hasErikd = false;
 let bw9 = "";
+let hasJoeld = false;
 function joel(){
+  if(!hasJoeld){
+    hasJoeld=true;
   let localId = Id(5);
   document.body.insertAdjacentHTML('beforeend',`
     <button style="background-color:red;border:0px;color:white;z-index:9999;"
-     onclick="document.getElementById('joelframe').remove(); this.remove();">
+     onclick="document.getElementById('joelframe').remove(); this.remove();hasJoeld=false;">
      X
      </button>
      <iframe id="joelframe" width="540" height="350" style="z-index:9999;" src="./joelschallenge1998/index.html">
      </iframe>
-  `)
+  `);
+  }
 }
 function setup() {
   window.BonziHandler.initializeSpriteSheets();
