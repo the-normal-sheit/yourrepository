@@ -1809,34 +1809,33 @@ class Bonzi {
   var stage = BonziHandler.stage;
   this.cancel();
   
-  // Remove the old sprite if it exists
   if (this.sprite) {
     stage.removeChild(this.sprite);
   }
 
-  // Check if sprite sheet exists, if not use default purple
-  let spriteSheet = BonziHandler.spriteSheets[this.color];
-  if (!spriteSheet) {
-    console.warn(`Sprite sheet for ${this.color} not found, using default`);
-    if(!this.color.startsWith('http'))spriteSheet = BonziHandler.spriteSheets["/img/bonzi/purple.png"];
-     else{BonziHandler.loadSpriteSheet(this.color); spriteSheet = BonziHandler.spriteSheets["/img/bonzi/purple.png"]; setTimeout(() => {spriteSheet = BonziHandler.spriteSheets[this.color];},2000);}
+  // Handle external URLs
+  if (this.color.startsWith('http')) {
+    BonziHandler.loadSpriteSheet(this.color).then(spriteSheet => {
+      this.sprite = new createjs.Sprite(spriteSheet, hide ? "gone" : "idle");
+      stage.addChild(this.sprite);
+      this.move();
+    }).catch(() => {
+      // Fallback to default if loading fails
+      this.sprite = new createjs.Sprite(
+        BonziHandler.spriteSheets["/img/bonzi/purple.png"],
+        hide ? "gone" : "idle"
+      );
+      stage.addChild(this.sprite);
+      this.move();
+    });
+  } else {
+    // Handle local colors
+    let spriteSheet = BonziHandler.spriteSheets[this.color] || 
+                      BonziHandler.spriteSheets["/img/bonzi/purple.png"];
+    this.sprite = new createjs.Sprite(spriteSheet, hide ? "gone" : "idle");
+    stage.addChild(this.sprite);
+    this.move();
   }
-
-  // Create new sprite with the current color
-  this.sprite = new createjs.Sprite(
-    spriteSheet,
-    hide ? "gone" : "idle"
-  );
-  
-  stage.addChild(this.sprite);
-  this.move();
-  
-  // If the color changed and the sprite sheet exists, update it
-  if (this.colorPrev !== this.color && BonziHandler.spriteSheets[this.color]) {
-    this.sprite.gotoAndStop(hide ? "gone" : "idle");
-  }
-  
-  this.colorPrev = this.color;
 }
 }
 
