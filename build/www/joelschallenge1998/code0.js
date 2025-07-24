@@ -20,6 +20,8 @@ gdjs.menuCode.GDNewText2Objects1= [];
 gdjs.menuCode.GDNewText2Objects2= [];
 gdjs.menuCode.GDNewText3Objects1= [];
 gdjs.menuCode.GDNewText3Objects2= [];
+gdjs.menuCode.GDNewSprite8Objects1= [];
+gdjs.menuCode.GDNewSprite8Objects2= [];
 gdjs.menuCode.GDNewSprite7Objects1= [];
 gdjs.menuCode.GDNewSprite7Objects2= [];
 gdjs.menuCode.GDNew3DBox13Objects1= [];
@@ -148,6 +150,23 @@ if (isConditionTrue_0) {
 }
 
 
+{
+
+
+let isConditionTrue_0 = false;
+{
+gdjs.copyArray(runtimeScene.getObjects("NewTiledSprite"), gdjs.menuCode.GDNewTiledSpriteObjects1);
+{for(var i = 0, len = gdjs.menuCode.GDNewTiledSpriteObjects1.length ;i < len;++i) {
+    gdjs.menuCode.GDNewTiledSpriteObjects1[i].setXOffset(gdjs.menuCode.GDNewTiledSpriteObjects1[i].getXOffset() + (1));
+}
+}{for(var i = 0, len = gdjs.menuCode.GDNewTiledSpriteObjects1.length ;i < len;++i) {
+    gdjs.menuCode.GDNewTiledSpriteObjects1[i].setYOffset(gdjs.menuCode.GDNewTiledSpriteObjects1[i].getYOffset() + (1));
+}
+}}
+
+}
+
+
 };
 
 gdjs.menuCode.func = function(runtimeScene) {
@@ -173,6 +192,8 @@ gdjs.menuCode.GDNewText2Objects1.length = 0;
 gdjs.menuCode.GDNewText2Objects2.length = 0;
 gdjs.menuCode.GDNewText3Objects1.length = 0;
 gdjs.menuCode.GDNewText3Objects2.length = 0;
+gdjs.menuCode.GDNewSprite8Objects1.length = 0;
+gdjs.menuCode.GDNewSprite8Objects2.length = 0;
 gdjs.menuCode.GDNewSprite7Objects1.length = 0;
 gdjs.menuCode.GDNewSprite7Objects2.length = 0;
 gdjs.menuCode.GDNew3DBox13Objects1.length = 0;
@@ -211,6 +232,8 @@ gdjs.menuCode.GDNewText2Objects1.length = 0;
 gdjs.menuCode.GDNewText2Objects2.length = 0;
 gdjs.menuCode.GDNewText3Objects1.length = 0;
 gdjs.menuCode.GDNewText3Objects2.length = 0;
+gdjs.menuCode.GDNewSprite8Objects1.length = 0;
+gdjs.menuCode.GDNewSprite8Objects2.length = 0;
 gdjs.menuCode.GDNewSprite7Objects1.length = 0;
 gdjs.menuCode.GDNewSprite7Objects2.length = 0;
 gdjs.menuCode.GDNew3DBox13Objects1.length = 0;

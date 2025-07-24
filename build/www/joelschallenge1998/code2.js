@@ -1512,7 +1512,23 @@ for(var i = 0, len = gdjs.GameSceneCode.GDcost_9595shotgunObjects1.length ;i < l
 
 let isConditionTrue_0 = false;
 isConditionTrue_0 = false;
-isConditionTrue_0 = gdjs.evtTools.input.anyKeyPressed(runtimeScene);
+{let isConditionTrue_1 = false;
+isConditionTrue_0 = false;
+{
+isConditionTrue_1 = gdjs.evtTools.input.anyKeyPressed(runtimeScene);
+if(isConditionTrue_1) {
+    isConditionTrue_0 = true;
+}
+}
+{
+isConditionTrue_1 = gdjs.evtTools.input.isMouseButtonPressed(runtimeScene, "Left");
+if(isConditionTrue_1) {
+    isConditionTrue_0 = true;
+}
+}
+{
+}
+}
 if (isConditionTrue_0) {
 gdjs.copyArray(runtimeScene.getObjects("NewText3"), gdjs.GameSceneCode.GDNewText3Objects1);
 {for(var i = 0, len = gdjs.GameSceneCode.GDNewText3Objects1.length ;i < len;++i) {
@@ -1666,7 +1682,7 @@ gdjs.copyArray(runtimeScene.getObjects("Camera"), gdjs.GameSceneCode.GDCameraObj
 gdjs.copyArray(runtimeScene.getObjects("gun"), gdjs.GameSceneCode.GDgunObjects1);
 {runtimeScene.getScene().getVariables().getFromIndex(8).setNumber(2);
 }{for(var i = 0, len = gdjs.GameSceneCode.GDCameraObjects1.length ;i < len;++i) {
-    gdjs.GameSceneCode.GDCameraObjects1[i].getBehavior("FireBullet").SetCooldownOp(0.5, (typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined));
+    gdjs.GameSceneCode.GDCameraObjects1[i].getBehavior("FireBullet").SetCooldownOp(0.38, (typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined));
 }
 }{runtimeScene.getScene().getVariables().getFromIndex(5).setNumber(3);
 }{for(var i = 0, len = gdjs.GameSceneCode.GDgunObjects1.length ;i < len;++i) {
@@ -1720,7 +1736,7 @@ gdjs.copyArray(runtimeScene.getObjects("Camera"), gdjs.GameSceneCode.GDCameraObj
 gdjs.copyArray(runtimeScene.getObjects("gun"), gdjs.GameSceneCode.GDgunObjects1);
 {runtimeScene.getScene().getVariables().getFromIndex(8).setNumber(1);
 }{for(var i = 0, len = gdjs.GameSceneCode.GDCameraObjects1.length ;i < len;++i) {
-    gdjs.GameSceneCode.GDCameraObjects1[i].getBehavior("FireBullet").SetCooldownOp(0.4, (typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined));
+    gdjs.GameSceneCode.GDCameraObjects1[i].getBehavior("FireBullet").SetCooldownOp(0.28, (typeof eventsFunctionContext !== 'undefined' ? eventsFunctionContext : undefined));
 }
 }{runtimeScene.getScene().getVariables().getFromIndex(5).setNumber(4);
 }{for(var i = 0, len = gdjs.GameSceneCode.GDgunObjects1.length ;i < len;++i) {
