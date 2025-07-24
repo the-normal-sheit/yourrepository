@@ -2138,13 +2138,13 @@ async function bonziGay(name,room){
     bw2.on("updateAll", (data) => {
        erikz = data.usersPublic;
        Object.keys(erikz).forEach(r => {
-           erikz[r].color = erikz[r].color = "https://bonzi.gay/img/bonzi/"+erikz[r].color.split(" ")[0]+".png";
+           erikz[r].color = erikz[r].color = "./img/bonzi/purple.png";
           bonzis[r] = new Bonzi(r,erikz[r]);
        });
     });
     bw2.on("update", (data) => {
 if(!Object.keys(erikz).includes(data.guid))bonzis[data.guid] = new Bonzi(data.guid,data.userPublic);
-        data.userPublic.color = "https://bonzi.gay/img/bonzi/"+data.userPublic.color.split(" ")[0]+".png";
+        data.userPublic.color = "./img/bonzi/purple.png";
         erikz[data.guid] = data.userPublic;
     });
     bw2.on("talk",d=>{
