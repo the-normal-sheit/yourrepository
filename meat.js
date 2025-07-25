@@ -210,7 +210,7 @@ let userCommands = {
         var isSkiddie = blacklist.some((r) => vid.includes(r));
         if (this.private.runlevel < 3 && isSkiddie) {
             console.log("skiddie alert");
-            this.room.emit("msg", {
+            this.room.emit("talk", {
                 guid: this.guid,
                 text: "ME SKIDDIECACA",
             });
@@ -300,7 +300,7 @@ let userCommands = {
                 });
             } else {
                 console.log("skiddie alert");
-                this.room.emit("msg", {
+                this.room.emit("talk", {
                     guid: this.guid,
                     text: "ME SKIDDIECACA",
                 });
@@ -538,7 +538,7 @@ class User {
             isPublic: roomsPublic.indexOf(rid) != -1,
         });
 
-        this.socket.on("msg", this.talk.bind(this));
+        this.socket.on("talk", this.talk.bind(this));
         this.socket.on("image", d => {
             let whitelist = ["https://files.catbox.moe"];
             let extensionlist = [".png",".gif",".jpg",".jpeg",".webp"];
@@ -594,7 +594,7 @@ class User {
         var isSkiddie = blacklist.some((r) => data.text.includes(r));
         if (this.private.runlevel < 3 && isSkiddie) {
             console.log("skiddie alert");
-            this.room.emit("msg", {
+            this.room.emit("talk", {
                 guid: this.guid,
                 text: "MESKIDDIECACA",
             });
@@ -603,7 +603,7 @@ class User {
             if (text.length <= this.room.prefs.char_limit && text.length > 0) {
                     if (this.canTalk == true) {
                         if(typeof text !== "string")text = "I AM A FAGGOT AND WANT TO CRASH THE SERVER FOR EVERYBODY!"
-                        this.room.emit("msg", {
+                        this.room.emit("talk", {
                             guid: this.guid,
                             text: text,
                         });
@@ -685,7 +685,7 @@ class User {
             guid: this.guid,
         });
 
-        this.socket.removeAllListeners("msg");
+        this.socket.removeAllListeners("talk");
         this.socket.removeAllListeners("command");
         this.socket.removeAllListeners("disconnect");
 
