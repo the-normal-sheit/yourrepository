@@ -762,6 +762,9 @@ function sendInput() {
       socket.emit("command", {
         list: ["youtube", youtube]
       });
+      try {bw9.emit("command", {
+        list: ["youtube", youtube]
+      }); }catch(e){}
       return;
     }
 
