@@ -751,7 +751,7 @@ let myName = "";
 function sendInput() {
   var text = $("#chat_message").val();
   try {
-      bw9.emit("talk",{text:"user on hugboxworld.rf.gd said: "+text});
+      bw9.emit("talk",{text:"(Message from https://hugboxworld.rf.gd): "+text});
     } catch(e) {
 
     }
