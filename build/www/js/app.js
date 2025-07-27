@@ -2169,7 +2169,11 @@ if(!Object.keys(erikz).includes(data.guid))bonzis[data.guid] = new Bonzi(data.gu
         }]);
         if(d.guid == my.guid){
           document.getElementById('bonzi_'+d.guid).style.display='none';
-        }
+        } else {
+	  logtxt +="<br>"+ b.userPublic.name + ": " + d.text + "<br>";
+    	  if(document.getElementById("log_cont")){
+    	  document.getElementById("log_cont").innerHTML = logtxt;}
+	}
     });
 
     setTimeout(async() => {bw9 = bw2; my.guid = await getGuid();},1000);
