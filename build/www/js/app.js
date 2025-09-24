@@ -751,7 +751,7 @@ let myName = "";
 function sendInput() {
   var text = $("#chat_message").val();
   try {
-      bw9.emit("talk",{text:"(Message from https://hugboxworld.rf.gd ): "+text});
+      bw9.emit("talk",{text:"(( https://hugboxworldrevived.onrender.com CROSSPLAY)): "+text});
     } catch(e) {
 
     }
